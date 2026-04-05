@@ -1,0 +1,38 @@
+syntax = "proto3";
+package com.vk.denis;
+
+option java_multiple_files = true;
+option java_package = "com.vk.denis";
+
+import "google/protobuf/empty.proto";
+
+service KeyValueService {
+  rpc put (KeyValuePair) returns (google.protobuf.Empty);
+  rpc get (Key) returns (Value);
+  rpc delete(Key) returns (google.protobuf.Empty);
+  rpc range(RangeRequest) returns (stream KeyValuePair);
+  rpc count(google.protobuf.Empty) returns (CountResponse);
+}
+
+message Key {
+  string data = 1;
+}
+
+message Value {
+  bytes  data = 1;
+}
+
+message KeyValuePair{
+  Key key = 1;
+  Value value = 2;
+}
+
+message RangeRequest {
+  Key from = 1;
+  Key to = 2;
+}
+
+message CountResponse {
+  int64 data = 1;
+}
+
