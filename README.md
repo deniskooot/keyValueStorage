@@ -48,11 +48,11 @@ For api testing you can use messages:
 "value": {"data": "111="}
 }
 ```
+
 - for get/delete operation:
 ```
 {
-"key": {"data": "10"},
-"value": {"data": "123="}
+"data": "100"
 }
 ```
 
